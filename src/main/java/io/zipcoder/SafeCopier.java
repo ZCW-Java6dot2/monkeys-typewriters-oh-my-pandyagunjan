@@ -20,6 +20,7 @@ public class SafeCopier extends Copier {
             {
                 if(stringIterator.hasNext())
                     copied+=stringIterator.next()+ " ";
+                System.out.println(Thread.currentThread().getName());
             }
 
         }

@@ -1,7 +1,7 @@
 package io.zipcoder;
 
 public class MonkeyTypewriter {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         String introduction = "It was the best of times,\n" +
                 "it was the blurst of times,\n" +
                 "it was the age of wisdom,\n" +
@@ -31,17 +31,35 @@ public class MonkeyTypewriter {
         Thread[] unsafe = new Thread[5];
         for (int i = 0; i < 5; i++) {
             unsafe[i] = new Thread(unsafeCopier);
+          //  unsafe[i].start();
+        }
+        for (int i = 0; i < 5; i++) {
+           // unsafe[i] = new Thread(unsafeCopier);
             unsafe[i].start();
         }
+//
+//        for (int i = 0; i < 5; i++) {
+//            // unsafe[i] = new Thread(unsafeCopier);
+//            unsafe[i].join();
+//        }
 
         // Instead of creating 5 instances each and then starting it ,  to make is simpler and use For loop instead.
         //and then using the for loop , start it too.
-        SafeCopier safeCopier = new SafeCopier(introduction);
-        Thread[] safe = new Thread[5];
-        for (int i = 0; i < 5; i++) {
-            safe[i] = new Thread(safeCopier);
-            safe[i].start();
-        }
+//        SafeCopier safeCopier = new SafeCopier(introduction);
+//        Thread[] safe = new Thread[5];
+//        for (int i = 0; i < 5; i++) {
+//            safe[i] = new Thread(safeCopier);
+//        }
+//
+//        for (int i = 0; i < 5; i++) {
+//            safe[i].start();
+//        }
+//
+//        for (int i = 0; i < 5; i++) {
+//            safe[i].join();
+//        }
+
+
         // This wait is here because main is still a thread and we want the main method to print the finished copies
         // after enough time has passed.
         try {
@@ -51,7 +69,7 @@ public class MonkeyTypewriter {
         }
 
         // Print out the copied versions here.
-        System.out.println("Safe copy :\n" + safeCopier.copied + "\n");
+      //  System.out.println("Safe copy :\n" + safeCopier.copied + "\n");
         System.out.println("UnSafe copy :\n" + unsafeCopier.copied + "\n");
 
     }
